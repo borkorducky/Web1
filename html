@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Up To You - พัฒนาทักษะสู่อนาคต</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .skill-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin: 0 auto 1rem;
+        }
+        .progress-bar {
+            transition: width 1s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-2xl font-bold">Skill Up To You</div>
+                <div class="flex space-x-4 md:space-x-6 text-sm md:text-base">
+                    <a href="#home" class="hover:text-blue-200 transition-colors">หน้าแรก</a>
+                    <a href="#principles" class="hover:text-blue-200 transition-colors hidden md:inline">หลักการ 4S</a>
+                    <a href="#skills" class="hover:text-blue-200 transition-colors">ทักษะ</a>
+                    <a href="#test" class="hover:text-blue-200 transition-colors">แบบทดสอบ</a>
+                </div>
+                <div class="flex space-x-1 md:space-x-2">
+                    <button onclick="showLogin()" class="bg-white text-blue-600 px-2 md:px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors text-sm md:text-base">เข้าสู่ระบบ</button>
+                    <button onclick="showRegister()" class="bg-blue-700 text-white px-2 md:px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm md:text-base">สมัครสมาชิก</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl font-bold mb-6">พัฒนาทักษะสู่อนาคต</h1>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">ค้นพบศักยภาพของคุณและพัฒนาทักษะที่จำเป็นสำหรับอนาคต ด้วยระบบประเมินที่ครอบคลุมและแม่นยำ</p>
+            <button onclick="document.getElementById('test').scrollIntoView({behavior: 'smooth'})" class="bg-white text-blue-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-colors">เริ่มทำแบบทดสอบ</button>
+        </div>
+    </section>
+
+    <!-- 4S Principles -->
+    <section id="principles" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-16">หลักการ 4S</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center card-hover bg-blue-50 p-8 rounded-xl">
+                    <div class="skill-icon">
+                        <span>🎯</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-600 mb-4">Skills</h3>
+                    <p class="text-gray-600">ทักษะความสามารถที่หลากหลาย พัฒนาศักยภาพในทุกด้านเพื่อความสำเร็จ</p>
+                </div>
+                <div class="text-center card-hover bg-blue-50 p-8 rounded-xl">
+                    <div class="skill-icon">
+                        <span>💎</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-600 mb-4">Supply</h3>
+                    <p class="text-gray-600">ทรัพยากรน้อยแต่คุ้มค่า ใช้ประโยชน์สูงสุดจากสิ่งที่มีอยู่</p>
+                </div>
+                <div class="text-center card-hover bg-blue-50 p-8 rounded-xl">
+                    <div class="skill-icon">
+                        <span>🤝</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-600 mb-4">Supports</h3>
+                    <p class="text-gray-600">ช่วยเหลือทำงานร่วมกัน บริษัทมีความเป็นกลาง MOU ร่วมกับบริษัทอื่น</p>
+                </div>
+                <div class="text-center card-hover bg-blue-50 p-8 rounded-xl">
+                    <div class="skill-icon">
+                        <span>🗄️</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-600 mb-4">Storage</h3>
+                    <p class="text-gray-600">ฐานข้อมูลแน่น เก็บรักษาข้อมูลอย่างปลอดภัยและเข้าถึงได้ง่าย</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Categories -->
+    <section id="skills" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-16">ทักษะที่ควรพัฒนา</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover cursor-pointer" onclick="showSkillDetail('financial')">
+                    <div class="text-4xl mb-4">💰</div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">การบริหารเงิน</h3>
+                    <p class="text-gray-600 text-sm">จัดการการเงินส่วนตัวและธุรกิจ</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover cursor-pointer" onclick="showSkillDetail('eq')">
+                    <div class="text-4xl mb-4">❤️</div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">ความฉลาดทางอารมณ์</h3>
+                    <p class="text-gray-600 text-sm">เข้าใจและจัดการอารมณ์ตนเองและผู้อื่น</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover cursor-pointer" onclick="showSkillDetail('analysis')">
+                    <div class="text-4xl mb-4">🧠</div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">การคิดวิเคราะห์</h3>
+                    <p class="text-gray-600 text-sm">วิเคราะห์ข้อมูลและแก้ไขปัญหา</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover cursor-pointer" onclick="showSkillDetail('time')">
+                    <div class="text-4xl mb-4">⏰</div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">การจัดการเวลา</h3>
+                    <p class="text-gray-600 text-sm">วางแผนและใช้เวลาอย่างมีประสิทธิภาพ</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover cursor-pointer" onclick="showSkillDetail('communication')">
+                    <div class="text-4xl mb-4">💬</div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">การสื่อสาร</h3>
+                    <p class="text-gray-600 text-sm">สื่อสารอย่างมีประสิทธิภาพ</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover cursor-pointer" onclick="showSkillDetail('coding')">
+                    <div class="text-4xl mb-4">💻</div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Coding/Cybersecurity</h3>
+                    <p class="text-gray-600 text-sm">เขียนโปรแกรมและความปลอดภัยไซเบอร์</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover cursor-pointer" onclick="showSkillDetail('marketing')">
+                    <div class="text-4xl mb-4">📱</div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Digital Marketing</h3>
+                    <p class="text-gray-600 text-sm">การตลาดออนไลน์และสื่อดิจิทัล</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover cursor-pointer" onclick="showSkillDetail('technical')">
+                    <div class="text-4xl mb-4">🔧</div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">ทักษะช่าง/อาชีพเฉพาะ</h3>
+                    <p class="text-gray-600 text-sm">ทักษะเฉพาะทางและงานฝีมือ</p>
+                </div>
+            </div>
+
+            <!-- Demand Chart -->
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-bold text-center text-gray-800 mb-8">กราฟความต้องการทักษะในตลาดแรงงาน</h3>
+                <div class="max-w-4xl mx-auto">
+                    <canvas id="demandChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Test -->
+    <section id="test" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-16">แบบทดสอบประเมินทักษะ (24 ข้อ)</h2>
+            
+            <div id="loginPrompt" class="text-center mb-8">
+                <div class="bg-blue-50 p-8 rounded-xl max-w-md mx-auto">
+                    <h3 class="text-xl font-bold text-blue-600 mb-4">กรุณาเข้าสู่ระบบก่อนทำแบบทดสอบ</h3>
+                    <p class="text-gray-600 mb-6">เพื่อบันทึกผลการทดสอบและติดตามความก้าวหน้าของคุณ</p>
+                    <button onclick="showLogin()" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">เข้าสู่ระบบ</button>
+                </div>
+            </div>
+
+            <div id="testContainer" class="hidden">
+                <div class="max-w-4xl mx-auto">
+                    <div id="questionContainer" class="bg-white p-8 rounded-xl shadow-lg">
+                        <div class="mb-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-sm text-gray-500">คำถามที่ <span id="currentQuestion">1</span> จาก 24</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div id="progressBar" class="bg-blue-600 h-2 rounded-full progress-bar" style="width: 4%"></div>
+                            </div>
+                        </div>
+                        
+                        <div id="questionContent">
+                            <h3 id="questionText" class="text-xl font-bold text-gray-800 mb-6"></h3>
+                            <div id="answerOptions" class="space-y-4"></div>
+                        </div>
+                        
+                        <div class="flex justify-between mt-8">
+                            <button id="prevBtn" onclick="previousQuestion()" class="bg-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-400 transition-colors" disabled>ก่อนหน้า</button>
+                            <button id="nextBtn" onclick="nextQuestion()" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">ถัดไป</button>
+                        </div>
+                    </div>
+                    
+                    <div id="resultContainer" class="hidden bg-white p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold text-center text-gray-800 mb-8">ผลการประเมินทักษะของคุณ</h3>
+                        <div id="resultChart" class="mb-8">
+                            <canvas id="skillChart" width="400" height="200"></canvas>
+                        </div>
+                        <div id="skillBreakdown" class="grid md:grid-cols-2 gap-6"></div>
+                        <div class="text-center mt-8">
+                            <button onclick="retakeTest()" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors mr-4">ทำแบบทดสอบใหม่</button>
+                            <button onclick="viewHistory()" class="bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors">ดูประวัติการทดสอบ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold mb-4">Skill Up To You</h3>
+            <p class="text-blue-200 mb-6">พัฒนาทักษะสู่อนาคต เพื่อความสำเร็จที่ยั่งยืน</p>
+            <div class="mt-6 pt-6 border-t border-blue-400">
+                <p class="text-sm text-blue-200">&copy; 2025 Skill Up To You . สงวนลิขสิทธิ์.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+        <div class="bg-white p-8 rounded-xl max-w-md w-full mx-4">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">เข้าสู่ระบบ</h3>
+            
+            <form id="loginForm">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">อีเมล</label>
+                    <input type="email" id="loginEmail" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" required>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">รหัสผ่าน</label>
+                    <input type="password" id="loginPassword" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" required>
+                </div>
+                <div class="flex justify-between">
+                    <button type="button" onclick="closeModal('loginModal')" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition-colors">ยกเลิก</button>
+                    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">เข้าสู่ระบบ</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+        <div class="bg-white p-8 rounded-xl max-w-md w-full mx-4">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">สมัครสมาชิก</h3>
+            <form id="registerForm">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">ชื่อ-นามสกุล</label>
+                    <input type="text" id="registerName" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">อีเมล</label>
+                    <input type="email" id="registerEmail" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" required>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">รหัสผ่าน</label>
+                    <input type="password" id="registerPassword" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" required>
+                </div>
+                <div class="flex justify-between">
+                    <button type="button" onclick="closeModal('registerModal')" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition-colors">ยกเลิก</button>
+                    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">สมัครสมาชิก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let currentUser = null;
+        let currentQuestionIndex = 0;
+        let answers = [];
+        let startTime = null;
+        let timerInterval = null;
+        let allUsers = [];
+        let allTestResults = [];
+        
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyA2iveKXodkY2O86bP5_ukFa6oC_7VcFGeytrl3ON1URtuTbv0HFXkeeZk2zMClscgLA/exec';
+        const GOOGLE_SHEET_ID = '1n-ZXCBrtfihD73oNimNGZLVM9dUd2aeCZFKnhgfesjQ';
+        
+        // JSONP request function for Google Apps Script
+        function makeJSONPRequest(url, params, callback) {
+            const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
+            
+            // Create callback function
+            window[callbackName] = function(data) {
+                delete window[callbackName];
+                if (document.body.contains(script)) {
+                    document.body.removeChild(script);
+                }
+                callback(data);
+            };
+            
+            // Build URL with parameters
+            const queryString = Object.keys(params)
+                .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(params[key]))
+                .join('&');
+            
+            const finalUrl = url + '?' + queryString + '&callback=' + callbackName;
+            
+            // Create script tag
+            const script = document.createElement('script');
+            script.src = finalUrl;
+            script.onerror = function() {
+                delete window[callbackName];
+                if (document.body.contains(script)) {
+                    document.body.removeChild(script);
+                }
+                callback({ success: false, error: 'Network connection failed' });
+            };
+            
+            // Set timeout for request
+            setTimeout(() => {
+                if (window[callbackName]) {
+                    delete window[callbackName];
+                    if (document.body.contains(script)) {
+                        document.body.removeChild(script);
+                    }
+                    callback({ success: false, error: 'Request timeout' });
+                }
+            }, 10000); // 10 second timeout
+            
+            document.body.appendChild(script);
+        }
+        
+        // Questions for the skills assessment - 25 questions across 8 skill categories
+        const questions = [
+            // การบริหารเงิน (Financial) - 3 questions
+            {
+                text: "คุณต้องประหยัดเงินสำหรับเป้าหมายระยะยาว คุณจะวางแผนอย่างไร?",
+                options: [
+                    { text: "ตั้งงบประมาณรายเดือนและติดตาม", skills: ["financial"] },
+                    { text: "หาช่องทางลงทุนที่เหมาะสม", skills: ["financial"] },
+                    { text: "ลดค่าใช้จ่ายที่ไม่จำเป็น", skills: ["financial"] },
+                    { text: "ขอคำแนะนำจากที่ปรึกษาการเงิน", skills: ["communication"] }
+                ]
+            },
+            {
+                text: "บริษัทต้องการลดต้นทุนแต่รักษาคุณภาพ คุณจะแนะนำอย่างไร?",
+                options: [
+                    { text: "วิเคราะห์ต้นทุนแต่ละกระบวนการ", skills: ["financial"] },
+                    { text: "ปรับปรุงกระบวนการทำงานให้เหมาะสม", skills: ["technical"] },
+                    { text: "เจรจาต่อรองกับซัพพลายเออร์", skills: ["communication"] },
+                    { text: "วางแผนการใช้ทรัพยากรระยะยาว", skills: ["time"] }
+                ]
+            },
+            {
+                text: "เมื่อคุณต้องตัดสินใจลงทุนในธุรกิจ คุณจะพิจารณาปัจจัยใดเป็นหลัก?",
+                options: [
+                    { text: "วิเคราะห์ผลตอบแทนและความเสี่ยง", skills: ["financial"] },
+                    { text: "ศึกษาแนวโน้มตลาดและคู่แข่ง", skills: ["analysis"] },
+                    { text: "ปรึกษาผู้เชี่ยวชาญด้านการเงิน", skills: ["communication"] },
+                    { text: "วางแผนการลงทุนระยะยาว", skills: ["financial"] }
+                ]
+            },
+            
+            // ความฉลาดทางอารมณ์ (EQ) - 3 questions
+            {
+                text: "เมื่อเพื่อนร่วมงานโกรธคุณ คุณจะจัดการกับสถานการณ์นี้อย่างไร?",
+                options: [
+                    { text: "รอให้อารมณ์เขาเย็นลงก่อนแล้วค่อยคุย", skills: ["eq"] },
+                    { text: "หาสาเหตุและแก้ไขปัญหาทันที", skills: ["analysis"] },
+                    { text: "ขอความช่วยเหลือจากหัวหน้า", skills: ["communication"] },
+                    { text: "วิเคราะห์สถานการณ์และหาทางออก", skills: ["analysis"] }
+                ]
+            },
+            {
+                text: "เมื่อทีมงานมีความขัดแย้งกัน คุณจะจัดการอย่างไร?",
+                options: [
+                    { text: "รับฟังทุกฝ่ายและหาจุดร่วม", skills: ["eq"] },
+                    { text: "วิเคราะห์สาเหตุและหาทางออก", skills: ["analysis"] },
+                    { text: "จัดการประชุมเพื่อคุยกัน", skills: ["communication"] },
+                    { text: "ให้เวลาทุกคนคิดก่อนตัดสินใจ", skills: ["eq"] }
+                ]
+            },
+            {
+                text: "เมื่อคุณรู้สึกเครียดจากงานมาก คุณจะจัดการอย่างไร?",
+                options: [
+                    { text: "หาเวลาพักผ่อนและทำกิจกรรมที่ชอบ", skills: ["eq"] },
+                    { text: "วิเคราะห์สาเหตุของความเครียด", skills: ["analysis"] },
+                    { text: "คุยกับเพื่อนหรือครอบครัว", skills: ["communication"] },
+                    { text: "จัดลำดับงานใหม่ให้เหมาะสม", skills: ["time"] }
+                ]
+            },
+            
+            // การคิดวิเคราะห์ (Analysis) - 3 questions
+            {
+                text: "บริษัทของคุณมีทรัพยากรจำกัด แต่ต้องการผลลัพธ์สูงสุด คุณจะจัดการอย่างไร?",
+                options: [
+                    { text: "วิเคราะห์ ROI ของแต่ละกิจกรรม", skills: ["analysis"] },
+                    { text: "ใช้เทคโนโลยีเพิ่มประสิทธิภาพ", skills: ["coding"] },
+                    { text: "สร้างพันธมิตรกับบริษัทอื่น", skills: ["communication"] },
+                    { text: "จัดลำดับความสำคัญอย่างชัดเจน", skills: ["time"] }
+                ]
+            },
+            {
+                text: "คุณต้องวิเคราะห์ข้อมูลจำนวนมากเพื่อตัดสินใจ คุณจะทำอย่างไร?",
+                options: [
+                    { text: "ใช้เครื่องมือช่วยวิเคราะห์ข้อมูล", skills: ["analysis"] },
+                    { text: "แบ่งข้อมูลออกเป็นส่วนๆ", skills: ["analysis"] },
+                    { text: "หาผู้เชี่ยวชาญมาช่วยวิเคราะห์", skills: ["communication"] },
+                    { text: "มุ่งเน้นข้อมูลที่สำคัญที่สุด", skills: ["analysis"] }
+                ]
+            },
+            {
+                text: "เมื่อเจอปัญหาที่ซับซ้อนในงาน คุณจะแก้ไขอย่างไร?",
+                options: [
+                    { text: "แยกปัญหาออกเป็นส่วนย่อยๆ", skills: ["analysis"] },
+                    { text: "หาข้อมูลและตัวอย่างที่คล้ายกัน", skills: ["analysis"] },
+                    { text: "ปรึกษาทีมและรวบรวมความคิดเห็น", skills: ["communication"] },
+                    { text: "ทดลองแก้ไขทีละขั้นตอน", skills: ["analysis"] }
+                ]
+            },
+            
+            // การจัดการเวลา (Time) - 3 questions
+            {
+                text: "เมื่อคุณมีงานหลายอย่างที่ต้องทำในเวลาเดียวกัน คุณจะจัดลำดับความสำคัญอย่างไร?",
+                options: [
+                    { text: "ทำงานที่มี deadline ใกล้ที่สุดก่อน", skills: ["time"] },
+                    { text: "ทำงานที่ง่ายที่สุดก่อน", skills: ["time"] },
+                    { text: "ทำงานที่สำคัญที่สุดก่อน", skills: ["time"] },
+                    { text: "แบ่งเวลาทำทุกงานพร้อมกัน", skills: ["time"] }
+                ]
+            },
+            {
+                text: "เมื่อคุณต้องทำงานหลายโครงการพร้อมกัน คุณจะจัดการอย่างไร?",
+                options: [
+                    { text: "ใช้เครื่องมือจัดการโครงการ", skills: ["time"] },
+                    { text: "แบ่งเวลาและกำหนดลำดับความสำคัญ", skills: ["time"] },
+                    { text: "มอบหมายงานให้ทีม", skills: ["communication"] },
+                    { text: "ติดตามความคืบหน้าอย่างสม่ำเสมอ", skills: ["time"] }
+                ]
+            },
+            {
+                text: "คุณต้องเรียนรู้ทักษะใหม่ในเวลาจำกัด คุณจะจัดการอย่างไร?",
+                options: [
+                    { text: "แบ่งเวลาเรียนรู้อย่างเป็นระบบ", skills: ["time"] },
+                    { text: "มุ่งเน้นสิ่งที่สำคัญที่สุดก่อน", skills: ["time"] },
+                    { text: "หาคนช่วยสอนหรือให้คำแนะนำ", skills: ["communication"] },
+                    { text: "ใช้เทคโนโลยีช่วยเรียนรู้", skills: ["coding"] }
+                ]
+            },
+            
+            // การสื่อสาร (Communication) - 3 questions
+            {
+                text: "คุณต้องนำเสนองานต่อหน้าผู้บริหาร คุณจะเตรียมตัวอย่างไร?",
+                options: [
+                    { text: "เตรียมข้อมูลและสไลด์ให้ครบถ้วน", skills: ["communication"] },
+                    { text: "ฝึกพูดและเตรียมตัวจัดการความเครียด", skills: ["communication"] },
+                    { text: "ศึกษาข้อมูลผู้ฟังและปรับเนื้อหา", skills: ["communication"] },
+                    { text: "จัดเวลาและวางแผนการนำเสนอ", skills: ["time"] }
+                ]
+            },
+            {
+                text: "เมื่อต้องสื่อสารข่าวร้ายให้ลูกค้าทราบ คุณจะทำอย่างไร?",
+                options: [
+                    { text: "เตรียมข้อมูลและแนวทางแก้ไขก่อนแจ้ง", skills: ["communication"] },
+                    { text: "แจ้งตรงไปตรงมาพร้อมขอโทษ", skills: ["communication"] },
+                    { text: "หาทางเลือกและข้อเสนอทดแทน", skills: ["analysis"] },
+                    { text: "ประสานงานกับทีมเพื่อแก้ไขปัญหา", skills: ["communication"] }
+                ]
+            },
+            {
+                text: "คุณต้องโน้มน้าวใจทีมให้ยอมรับการเปลี่ยนแปลงใหม่ คุณจะทำอย่างไร?",
+                options: [
+                    { text: "อธิบายประโยชน์และความจำเป็น", skills: ["communication"] },
+                    { text: "รับฟังความกังวลและตอบข้อสงสัย", skills: ["communication"] },
+                    { text: "แสดงตัวอย่างความสำเร็จจากที่อื่น", skills: ["communication"] },
+                    { text: "วางแผนการเปลี่ยนแปลงทีละขั้นตอน", skills: ["time"] }
+                ]
+            },
+            
+            // Coding/Cybersecurity - 3 questions
+            {
+                text: "คุณต้องเรียนรู้ Technology ใหม่สำหรับงาน คุณจะทำอย่างไร?",
+                options: [
+                    { text: "หาคอร์สออนไลน์มาเรียน", skills: ["coding"] },
+                    { text: "ขอให้เพื่อนร่วมงานสอน", skills: ["communication"] },
+                    { text: "ลองใช้และเรียนรู้ด้วยตัวเอง", skills: ["coding"] },
+                    { text: "อ่านคู่มือและเอกสารประกอบ", skills: ["coding"] }
+                ]
+            },
+            {
+                text: "เมื่อระบบคอมพิวเตอร์ของบริษัทถูกโจมตีไซเบอร์ คุณจะทำอย่างไร?",
+                options: [
+                    { text: "ตัดการเชื่อมต่อเครือข่ายทันทีและแจ้งทีม IT", skills: ["coding"] },
+                    { text: "สำรองข้อมูลสำคัญและประเมินความเสียหาย", skills: ["coding"] },
+                    { text: "แจ้งผู้บริหารและลูกค้าที่อาจได้รับผลกระทบ", skills: ["communication"] },
+                    { text: "วางแผนการกู้คืนระบบอย่างเป็นขั้นตอน", skills: ["coding"] }
+                ]
+            },
+            {
+                text: "คุณต้องสร้างฐานข้อมูลลูกค้าที่ปลอดภัยและเข้าถึงง่าย คุณจะทำอย่างไร?",
+                options: [
+                    { text: "ใช้ระบบ Cloud Storage ที่มีความปลอดภัยสูง", skills: ["coding"] },
+                    { text: "สร้างระบบสำรองข้อมูลหลายชั้น", skills: ["coding"] },
+                    { text: "ฝึกอบรมทีมเรื่องความปลอดภัยข้อมูล", skills: ["communication"] },
+                    { text: "วางแผนการจัดการข้อมูลระยะยาว", skills: ["coding"] }
+                ]
+            },
+            
+            // Digital Marketing - 3 questions
+            {
+                text: "บริษัทต้องการเพิ่มยอดขายผ่านช่องทางดิจิทัล คุณจะแนะนำอย่างไร?",
+                options: [
+                    { text: "สร้างเนื้อหาที่ตรงกับกลุ่มเป้าหมาย", skills: ["marketing"] },
+                    { text: "ใช้ข้อมูลวิเคราะห์พฤติกรรมลูกค้า", skills: ["marketing"] },
+                    { text: "พัฒนาระบบ E-commerce ที่ใช้งานง่าย", skills: ["marketing"] },
+                    { text: "วางแผนแคมเปญระยะยาว", skills: ["marketing"] }
+                ]
+            },
+            {
+                text: "คุณต้องโปรโมทสินค้าใหม่ผ่านโซเชียลมีเดีย คุณจะเริ่มต้นอย่างไร?",
+                options: [
+                    { text: "วิเคราะห์กลุ่มเป้าหมายก่อน", skills: ["marketing"] },
+                    { text: "สร้างเนื้อหาที่น่าสนใจ", skills: ["marketing"] },
+                    { text: "ใช้เครื่องมือวิเคราะห์ข้อมูล", skills: ["marketing"] },
+                    { text: "วางแผนเวลาโพสต์", skills: ["marketing"] }
+                ]
+            },
+            {
+                text: "คุณต้องวัดผลแคมเปญการตลาดดิจิทัล คุณจะใช้ตัวชี้วัดใดเป็นหลัก?",
+                options: [
+                    { text: "อัตราการเข้าถึงและการมีส่วนร่วม", skills: ["marketing"] },
+                    { text: "อัตราการแปลงเป็นลูกค้า (Conversion Rate)", skills: ["marketing"] },
+                    { text: "ต้นทุนต่อการได้ลูกค้าใหม่", skills: ["marketing"] },
+                    { text: "ผลตอบแทนจากการลงทุน (ROI)", skills: ["marketing"] }
+                ]
+            },
+            
+            // ทักษะช่าง/อาชีพเฉพาะ (Technical) - 3 questions
+            {
+                text: "เมื่อเครื่องจักรในโรงงานเสีย คุณจะแก้ไขปัญหาอย่างไร?",
+                options: [
+                    { text: "ตรวจสอบตามคู่มือการแก้ไขปัญหา", skills: ["technical"] },
+                    { text: "ประสานงานกับทีมช่างและผู้จำหน่าย", skills: ["technical"] },
+                    { text: "วิเคราะห์สาเหตุเพื่อป้องกันปัญหาซ้ำ", skills: ["technical"] },
+                    { text: "จัดลำดับการซ่อมตามความเร่งด่วน", skills: ["technical"] }
+                ]
+            },
+            {
+                text: "คุณต้องติดตั้งอุปกรณ์ใหม่ที่ซับซ้อน คุณจะเริ่มต้นอย่างไร?",
+                options: [
+                    { text: "อ่านคู่มือและเตรียมเครื่องมือให้ครบ", skills: ["technical"] },
+                    { text: "ศึกษาวิดีโอการติดตั้งก่อน", skills: ["technical"] },
+                    { text: "ขอความช่วยเหลือจากผู้เชี่ยวชาญ", skills: ["technical"] },
+                    { text: "ทดสอบการทำงานทีละส่วน", skills: ["technical"] }
+                ]
+            },
+            {
+                text: "งานฝีมือของคุณไม่ได้คุณภาพตามที่ต้องการ คุณจะปรับปรุงอย่างไร?",
+                options: [
+                    { text: "ฝึกฝนเทคนิคพื้นฐานให้แม่นยำ", skills: ["technical"] },
+                    { text: "หาเครื่องมือที่เหมาะสมกว่า", skills: ["technical"] },
+                    { text: "เรียนรู้จากผู้เชี่ยวชาญ", skills: ["technical"] },
+                    { text: "ทำซ้ำจนกว่าจะได้มาตรฐาน", skills: ["technical"] }
+                ]
+            }
+        ];
+
+        // Skill categories
+        const skillCategories = {
+            financial: "การบริหารเงิน",
+            eq: "ความฉลาดทางอารมณ์",
+            analysis: "การคิดวิเคราะห์",
+            time: "การจัดการเวลา",
+            communication: "การสื่อสาร",
+            coding: "Coding/Cybersecurity",
+            marketing: "Digital Marketing",
+            technical: "ทักษะช่าง/อาชีพเฉพาะ"
+        };
+
+        // Load all data from Google Sheet
+        function loadDataFromGoogleSheet() {
+            console.log('🔄 Loading data from Google Sheet...');
+            
+            makeJSONPRequest(GOOGLE_SCRIPT_URL, { action: 'loadAllData' }, function(response) {
+                
+                if (response && response.success) {
+                    console.log('✅ Data loaded successfully from Google Sheet');
+                    
+                    // Store data globally
+                    allUsers = response.users || [];
+                    allTestResults = response.testResults || [];
+                    
+                    // Store in localStorage as backup
+                    localStorage.setItem('allUsers', JSON.stringify(allUsers));
+                    localStorage.setItem('allTestResults', JSON.stringify(allTestResults));
+                    
+                    // Check if user was previously logged in
+                    checkLoginStatus();
+                } else {
+                    console.log('❌ Failed to load from Google Sheet:', response);
+                    loadDataFromLocalStorage();
+                }
+            });
+        }
+        
+        // Load data from localStorage as fallback
+        function loadDataFromLocalStorage() {
+            allUsers = JSON.parse(localStorage.getItem('allUsers') || '[]');
+            allTestResults = JSON.parse(localStorage.getItem('allTestResults') || '[]');
+            
+            // Add demo users if no users exist
+            if (allUsers.length === 0) {
+                allUsers = [
+                    {
+                        id: 'demo1',
+                        name: 'ผู้ใช้ทดสอบ',
+                        email: 'demo@test.com',
+                        password: '123456',
+                        registeredAt: new Date().toISOString()
+                    },
+                    {
+                        id: 'admin1',
+                        name: 'ผู้ดูแลระบบ',
+                        email: 'admin@skillup.com',
+                        password: 'admin123',
+                        registeredAt: new Date().toISOString()
+                    }
+                ];
+                localStorage.setItem('allUsers', JSON.stringify(allUsers));
+            }
+            
+            checkLoginStatus();
+        }
+        
+        // Show connection status (disabled)
+        function showConnectionStatus(message, type) {
+            // Status display disabled
+            return;
+        }
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            createDemandChart();
+            loadDataFromGoogleSheet();
+        });
+
+        // Authentication functions
+        function showLogin() {
+            document.getElementById('loginModal').classList.remove('hidden');
+        }
+
+        function showRegister() {
+            document.getElementById('registerModal').classList.remove('hidden');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        function checkLoginStatus() {
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                updateUIForLoggedInUser();
+            }
+        }
+
+        function updateUIForLoggedInUser() {
+            if (currentUser) {
+                // Update navigation
+                const navButtons = document.querySelector('nav .flex.space-x-1.md\\:space-x-2');
+                if (navButtons) {
+                    navButtons.innerHTML = `
+                        <span class="text-white text-sm md:text-base">สวัสดี, ${currentUser.name}</span>
+                        <button onclick="logout()" class="bg-red-600 text-white px-2 md:px-4 py-2 rounded-lg hover:bg-red-700 transition-colors text-sm md:text-base">ออกจากระบบ</button>
+                    `;
+                }
+                
+                // Initialize test display
+                initializeTestDisplay();
+            }
+        }
+
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            location.reload();
+        }
+
+
+
+        // Handle login form
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            
+            console.log('Login attempt:', email);
+            console.log('Available users:', allUsers.length);
+            
+            // Validation
+            if (!email || !password) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'กรุณากรอกข้อมูลให้ครบถ้วน',
+                    text: 'โปรดกรอกอีเมลและรหัสผ่าน'
+                });
+                return;
+            }
+            
+            // Check user credentials
+            const user = allUsers.find(u => u.email === email && u.password === password);
+            console.log('Found user:', user);
+            
+            if (user) {
+                currentUser = {
+                    id: user.id,
+                    name: user.name,
+                    email: user.email
+                };
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                console.log('User logged in:', currentUser);
+                
+                // Clear form
+                document.getElementById('loginForm').reset();
+                
+                Swal.fire({
+                    icon: 'success',
+                    title: 'เข้าสู่ระบบสำเร็จ!',
+                    text: `ยินดีต้อนรับ ${currentUser.name}`,
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+                
+                closeModal('loginModal');
+                updateUIForLoggedInUser();
+            } else {
+                console.log('Login failed - user not found');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'เข้าสู่ระบบไม่สำเร็จ',
+                    text: 'อีเมลหรือรหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง'
+                });
+            }
+        });
+
+        // Handle register form
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('registerName').value.trim();
+            const email = document.getElementById('registerEmail').value.trim();
+            const password = document.getElementById('registerPassword').value;
+            
+            // Validation
+            if (!name || !email || !password) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'กรุณากรอกข้อมูลให้ครบถ้วน',
+                    text: 'โปรดกรอกชื่อ อีเมล และรหัสผ่าน'
+                });
+                return;
+            }
+            
+            if (password.length < 6) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'รหัสผ่านสั้นเกินไป',
+                    text: 'รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร'
+                });
+                return;
+            }
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'รูปแบบอีเมลไม่ถูกต้อง',
+                    text: 'โปรดกรอกอีเมลในรูปแบบที่ถูกต้อง'
+                });
+                return;
+            }
+            
+            // Check if email already exists
+            if (allUsers.find(user => user.email === email)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'อีเมลนี้ถูกใช้แล้ว',
+                    text: 'กรุณาใช้อีเมลอื่น หรือเข้าสู่ระบบหากคุณมีบัญชีแล้ว'
+                });
+                return;
+            }
+            
+            // Create new user object
+            const newUser = {
+                id: 'USER_' + Date.now(),
+                name: name,
+                email: email,
+                password: password,
+                registeredAt: new Date().toISOString()
+            };
+            
+            // Save to Google Sheet
+            makeJSONPRequest(GOOGLE_SCRIPT_URL, {
+                action: 'registerUser',
+                userData: JSON.stringify(newUser)
+            }, function(result) {
+                // Clear form
+                document.getElementById('registerForm').reset();
+                
+                // Add to local array
+                allUsers.push(newUser);
+                localStorage.setItem('allUsers', JSON.stringify(allUsers));
+                
+                Swal.fire({
+                    icon: 'success',
+                    title: 'สมัครสมาชิกสำเร็จ!',
+                    html: `
+                        <p class="mb-4">บัญชีของคุณถูกสร้างเรียบร้อยแล้ว</p>
+                        <div class="bg-blue-50 p-4 rounded-lg text-left">
+                            <p><strong>ชื่อ:</strong> ${name}</p>
+                            <p><strong>อีเมล:</strong> ${email}</p>
+                        </div>
+                    `,
+                    confirmButtonText: 'เข้าสู่ระบบ',
+                    confirmButtonColor: '#3b82f6'
+                }).then(() => {
+                    closeModal('registerModal');
+                    // Auto-fill login form
+                    document.getElementById('loginEmail').value = email;
+                    document.getElementById('loginPassword').value = password;
+                    showLogin();
+                });
+            });
+        });
+
+        // Skills test functions
+        function startTest() {
+            if (!currentUser) {
+                showLogin();
+                return;
+            }
+            
+            // Initialize test display instead of starting immediately
+            initializeTestDisplay();
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                const now = new Date();
+                const elapsed = Math.floor((now - startTime) / 1000);
+                const minutes = Math.floor(elapsed / 60);
+                const seconds = elapsed % 60;
+                document.getElementById('timer').textContent = 
+                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        function showQuestion() {
+            const question = questions[currentQuestionIndex];
+            document.getElementById('questionText').textContent = question.text;
+            document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+            
+            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+            
+            const optionsContainer = document.getElementById('answerOptions');
+            optionsContainer.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'flex items-center p-4 border border-gray-200 rounded-lg hover:bg-blue-50 cursor-pointer transition-colors';
+                optionDiv.onclick = () => selectAnswer(index);
+                
+                optionDiv.innerHTML = `
+                    <input type="radio" name="answer" value="${index}" class="mr-3">
+                    <label class="cursor-pointer flex-1">${option.text}</label>
+                `;
+                
+                optionsContainer.appendChild(optionDiv);
+            });
+            
+            // Update button states
+            document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
+            document.getElementById('nextBtn').textContent = 
+                currentQuestionIndex === questions.length - 1 ? 'เสร็จสิ้น' : 'ถัดไป';
+        }
+
+        function selectAnswer(optionIndex) {
+            const radios = document.querySelectorAll('input[name="answer"]');
+            radios[optionIndex].checked = true;
+            
+            // Update visual selection
+            document.querySelectorAll('#answerOptions > div').forEach((div, index) => {
+                if (index === optionIndex) {
+                    div.classList.add('bg-blue-50', 'border-blue-300');
+                } else {
+                    div.classList.remove('bg-blue-50', 'border-blue-300');
+                }
+            });
+        }
+
+        function nextQuestion() {
+            const selectedAnswer = document.querySelector('input[name="answer"]:checked');
+            if (!selectedAnswer) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'กรุณาเลือกคำตอบ',
+                    text: 'โปรดเลือกคำตอบก่อนไปยังคำถามถัดไป'
+                });
+                return;
+            }
+            
+            answers[currentQuestionIndex] = parseInt(selectedAnswer.value);
+            
+            if (currentQuestionIndex === questions.length - 1) {
+                finishTest();
+            } else {
+                currentQuestionIndex++;
+                showQuestion();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion();
+                
+                // Restore previous answer if exists
+                if (answers[currentQuestionIndex] !== undefined) {
+                    const radios = document.querySelectorAll('input[name="answer"]');
+                    radios[answers[currentQuestionIndex]].checked = true;
+                    selectAnswer(answers[currentQuestionIndex]);
+                }
+            }
+        }
+
+        async function finishTest() {
+            clearInterval(timerInterval);
+            
+            const endTime = new Date();
+            const totalTime = Math.floor((endTime - startTime) / 1000);
+            
+            // Calculate skill scores
+            const skillScores = {};
+            Object.keys(skillCategories).forEach(skill => {
+                skillScores[skill] = 0;
+            });
+            
+            answers.forEach((answerIndex, questionIndex) => {
+                const question = questions[questionIndex];
+                const selectedOption = question.options[answerIndex];
+                selectedOption.skills.forEach(skill => {
+                    skillScores[skill] += 1;
+                });
+            });
+            
+            // Convert to percentages
+            const maxScore = Math.max(...Object.values(skillScores));
+            Object.keys(skillScores).forEach(skill => {
+                skillScores[skill] = Math.round((skillScores[skill] / maxScore) * 100);
+            });
+            
+            // Save test result
+            const testResult = {
+                userId: currentUser.id,
+                userEmail: currentUser.email,
+                userName: currentUser.name,
+                testDate: new Date().toISOString(),
+                totalTime: totalTime,
+                answers: answers,
+                skillScores: skillScores
+            };
+            
+            saveTestResult(testResult);
+            showResults(skillScores, totalTime);
+        }
+
+        function saveTestResult(testResult) {
+            // Generate test ID
+            testResult.testId = 'TEST_' + Date.now();
+            
+            // Save to Google Sheet using JSONP
+            makeJSONPRequest(GOOGLE_SCRIPT_URL, {
+                action: 'saveTestResult',
+                testData: JSON.stringify(testResult)
+            }, function(result) {
+                // Add to local array
+                allTestResults.push(testResult);
+                localStorage.setItem('allTestResults', JSON.stringify(allTestResults));
+                
+                Swal.fire({
+                    icon: 'success',
+                    title: 'บันทึกผลการทดสอบสำเร็จ!',
+                    html: `
+                        <div class="text-center">
+                            <div class="text-6xl mb-4">🎉</div>
+                            <p class="mb-2">ผลการทดสอบถูกบันทึกเรียบร้อยแล้ว</p>
+                            <div class="bg-green-50 p-3 rounded-lg mt-4">
+                                <p class="text-green-600 text-xs">รหัสการทดสอบ: ${testResult.testId}</p>
+                            </div>
+                        </div>
+                    `,
+                    timer: 3000,
+                    showConfirmButton: false
+                });
+            });
+        }
+
+        function showResults(skillScores, totalTime) {
+            document.getElementById('questionContainer').classList.add('hidden');
+            document.getElementById('resultContainer').classList.remove('hidden');
+            
+            // Create skill chart
+            createSkillChart(skillScores);
+            
+            // Show skill breakdown
+            const breakdownContainer = document.getElementById('skillBreakdown');
+            breakdownContainer.innerHTML = '';
+            
+            Object.entries(skillScores).forEach(([skill, score]) => {
+                const skillDiv = document.createElement('div');
+                skillDiv.className = 'bg-gray-50 p-4 rounded-lg';
+                skillDiv.innerHTML = `
+                    <h4 class="font-bold text-gray-800 mb-2">${skillCategories[skill]}</h4>
+                    <div class="w-full bg-gray-200 rounded-full h-3 mb-2">
+                        <div class="bg-blue-600 h-3 rounded-full progress-bar" style="width: ${score}%"></div>
+                    </div>
+                    <p class="text-sm text-gray-600">${score}% - ${getSkillRecommendation(skill, score)}</p>
+                `;
+                breakdownContainer.appendChild(skillDiv);
+            });
+            
+            // Show completion time
+            const minutes = Math.floor(totalTime / 60);
+            const seconds = totalTime % 60;
+            const timeDiv = document.createElement('div');
+            timeDiv.className = 'col-span-full text-center mt-4 p-4 bg-blue-50 rounded-lg';
+            timeDiv.innerHTML = `
+                <h4 class="font-bold text-blue-600 mb-2">เวลาที่ใช้ในการทำแบบทดสอบ</h4>
+                <p class="text-2xl font-bold text-blue-800">${minutes}:${seconds.toString().padStart(2, '0')}</p>
+            `;
+            breakdownContainer.appendChild(timeDiv);
+
+            // Show career recommendations
+            const careerRecommendations = getCareerRecommendations(skillScores);
+            if (careerRecommendations.length > 0) {
+                const careerDiv = document.createElement('div');
+                careerDiv.className = 'col-span-full mt-4 p-4 bg-green-50 rounded-lg';
+                careerDiv.innerHTML = `
+                    <h4 class="font-bold text-green-600 mb-3">💼 อาชีพที่แนะนำสำหรับคุณ</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                        ${careerRecommendations.map(career => 
+                            `<div class="bg-white p-2 rounded text-sm text-center border border-green-200">${career}</div>`
+                        ).join('')}
+                    </div>
+                    <p class="text-xs text-green-600 mt-2">*อิงจากทักษะที่เด่นของคุณ</p>
+                `;
+                breakdownContainer.appendChild(careerDiv);
+            }
+        }
+
+        function getSkillRecommendation(skill, score) {
+            if (score >= 80) return "ยอดเยี่ยม! คุณมีทักษะในด้านนี้สูงมาก";
+            if (score >= 60) return "ดีมาก! ควรพัฒนาต่อเพื่อความเชี่ยวชาญ";
+            if (score >= 40) return "ปานกลาง ควรฝึกฝนเพิ่มเติม";
+            return "ควรให้ความสำคัญและพัฒนาทักษะนี้";
+        }
+
+        function getCareerRecommendations(skillScores) {
+            const careers = {
+                financial: ["นักวิเคราะห์การเงิน", "ที่ปรึกษาการเงิน", "นักบัญชี", "นักลงทุน"],
+                eq: ["ผู้จัดการทรัพยากรบุคคล", "นักจิตวิทยา", "ผู้นำทีม", "นักขาย"],
+                analysis: ["นักวิเคราะห์ข้อมูล", "นักวิจัย", "ที่ปรึกษาธุรกิจ", "นักวิเคราะห์ระบบ"],
+                time: ["ผู้จัดการโครงการ", "ผู้ประสานงาน", "ผู้บริหาร", "ผู้จัดการสำนักงาน"],
+                communication: ["นักประชาสัมพันธ์", "นักข่าว", "ครู/อาจารย์", "นักการตลาด"],
+                coding: ["นักพัฒนาซอฟต์แวร์", "ผู้เชี่ยวชาญความปลอดภัย", "วิศวกรระบบ", "นักวิเคราะห์ระบบ"],
+                marketing: ["นักการตลาดดิจิทัล", "ผู้จัดการแบรนด์", "นักโฆษณา", "ผู้จัดการสื่อสังคม"],
+                technical: ["ช่างเทคนิค", "วิศวกร", "ช่างซ่อมบำรุง", "ผู้เชี่ยวชาญเฉพาะทาง"]
+            };
+
+            // Find top 3 skills
+            const topSkills = Object.entries(skillScores)
+                .sort(([,a], [,b]) => b - a)
+                .slice(0, 3);
+
+            let recommendations = [];
+            topSkills.forEach(([skill, score]) => {
+                if (score >= 60 && careers[skill]) {
+                    recommendations = recommendations.concat(careers[skill]);
+                }
+            });
+
+            // Remove duplicates and limit to 6 recommendations
+            return [...new Set(recommendations)].slice(0, 6);
+        }
+
+        function createSkillChart(skillScores) {
+            const ctx = document.getElementById('skillChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: Object.values(skillCategories),
+                    datasets: [{
+                        label: 'คะแนนทักษะของคุณ',
+                        data: Object.values(skillScores),
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderColor: 'rgb(59, 130, 246)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgb(59, 130, 246)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(59, 130, 246)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                stepSize: 20
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        function createDemandChart() {
+            const ctx = document.getElementById('demandChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: Object.values(skillCategories),
+                    datasets: [{
+                        label: 'ความต้องการในตลาดแรงงาน (%)',
+                        data: [75, 85, 90, 80, 95, 88, 92, 70],
+                        backgroundColor: [
+                            'rgba(59, 130, 246, 0.8)',
+                            'rgba(16, 185, 129, 0.8)',
+                            'rgba(245, 158, 11, 0.8)',
+                            'rgba(239, 68, 68, 0.8)',
+                            'rgba(139, 92, 246, 0.8)',
+                            'rgba(236, 72, 153, 0.8)',
+                            'rgba(34, 197, 94, 0.8)',
+                            'rgba(251, 146, 60, 0.8)'
+                        ],
+                        borderColor: [
+                            'rgb(59, 130, 246)',
+                            'rgb(16, 185, 129)',
+                            'rgb(245, 158, 11)',
+                            'rgb(239, 68, 68)',
+                            'rgb(139, 92, 246)',
+                            'rgb(236, 72, 153)',
+                            'rgb(34, 197, 94)',
+                            'rgb(251, 146, 60)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.parsed.y + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function showSkillDetail(skillType) {
+            const skillDetails = {
+                financial: {
+                    title: "การบริหารเงิน",
+                    description: "ทักษะในการจัดการการเงินส่วนตัวและธุรกิจ รวมถึงการวางแผนการเงิน การลงทุน และการประหยัด",
+                    tips: [
+                        "เรียนรู้การทำงบประมาณรายเดือน",
+                        "ศึกษาเรื่องการลงทุนเบื้องต้น",
+                        "ฝึกการติดตามรายรับ-รายจ่าย",
+                        "เรียนรู้การวางแผนการเงินระยะยาว"
+                    ]
+                },
+                eq: {
+                    title: "ความฉลาดทางอารมณ์ (EQ)",
+                    description: "ความสามารถในการเข้าใจ จัดการ และใช้อารมณ์ของตนเองและผู้อื่นอย่างมีประสิทธิภาพ",
+                    tips: [
+                        "ฝึกการรับรู้อารมณ์ตนเอง",
+                        "เรียนรู้การจัดการความเครียด",
+                        "พัฒนาทักษะการเอาใจใส่ผู้อื่น",
+                        "ฝึกการสื่อสารเชิงบวก"
+                    ]
+                },
+                analysis: {
+                    title: "การคิดวิเคราะห์",
+                    description: "ความสามารถในการแยกแยะ วิเคราะห์ข้อมูล และแก้ไขปัญหาอย่างเป็นระบบ",
+                    tips: [
+                        "ฝึกการตั้งคำถามที่ถูกต้อง",
+                        "เรียนรู้การใช้ข้อมูลในการตัดสินใจ",
+                        "พัฒนาทักษะการแก้ปัญหา",
+                        "ฝึกการคิดอย่างเป็นระบบ"
+                    ]
+                },
+                time: {
+                    title: "การจัดการเวลา",
+                    description: "ทักษะในการวางแผน จัดลำดับความสำคัญ และใช้เวลาอย่างมีประสิทธิภาพ",
+                    tips: [
+                        "เรียนรู้การตั้งเป้าหมาย SMART",
+                        "ใช้เครื่องมือจัดการเวลา",
+                        "ฝึกการจัดลำดับความสำคัญ",
+                        "เรียนรู้การมอบหมายงาน"
+                    ]
+                },
+                communication: {
+                    title: "การสื่อสาร",
+                    description: "ความสามารถในการถ่ายทอดความคิด ฟัง และเข้าใจผู้อื่นอย่างมีประสิทธิภาพ",
+                    tips: [
+                        "ฝึกการฟังอย่างตั้งใจ",
+                        "เรียนรู้การนำเสนออย่างมั่นใจ",
+                        "พัฒนาทักษะการเขียน",
+                        "ฝึกการสื่อสารในสถานการณ์ต่างๆ"
+                    ]
+                },
+                coding: {
+                    title: "Coding/Cybersecurity",
+                    description: "ทักษะการเขียนโปรแกรมและความรู้ด้านความปลอดภัยไซเบอร์",
+                    tips: [
+                        "เริ่มเรียนภาษาโปรแกรมเบื้องต้น",
+                        "ศึกษาหลักการความปลอดภัยออนไลน์",
+                        "ฝึกแก้ปัญหาด้วยโค้ด",
+                        "เรียนรู้เครื่องมือพัฒนาซอฟต์แวร์"
+                    ]
+                },
+                marketing: {
+                    title: "Digital Marketing",
+                    description: "ทักษะการตลาดออนไลน์และการใช้สื่อดิจิทัลในการส่งเสริมการขาย",
+                    tips: [
+                        "เรียนรู้การใช้โซเชียลมีเดีย",
+                        "ศึกษา SEO และ SEM",
+                        "ฝึกการสร้างเนื้อหาที่น่าสนใจ",
+                        "เรียนรู้การวิเคราะห์ข้อมูลการตลาด"
+                    ]
+                },
+                technical: {
+                    title: "ทักษะช่าง/อาชีพเฉพาะ",
+                    description: "ทักษะเฉพาะทางและงานฝีมือที่ต้องใช้ความชำนาญเฉพาะด้าน",
+                    tips: [
+                        "ฝึกฝนทักษะด้วยการปฏิบัติจริง",
+                        "เรียนรู้จากผู้เชี่ยวชาญ",
+                        "ติดตามเทคโนโลยีใหม่ๆ",
+                        "พัฒนาความแม่นยำและคุณภาพงาน"
+                    ]
+                }
+            };
+
+            const detail = skillDetails[skillType];
+            if (detail) {
+                Swal.fire({
+                    title: detail.title,
+                    html: `
+                        <div class="text-left">
+                            <p class="mb-4">${detail.description}</p>
+                            <h4 class="font-bold mb-2">แนวทางการพัฒนา:</h4>
+                            <ul class="list-disc list-inside space-y-1">
+                                ${detail.tips.map(tip => `<li>${tip}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `,
+                    width: 600,
+                    confirmButtonText: 'ปิด',
+                    confirmButtonColor: '#3b82f6'
+                });
+            }
+        }
+
+        function retakeTest() {
+            document.getElementById('resultContainer').classList.add('hidden');
+            initializeTestDisplay();
+        }
+
+        function viewHistory() {
+            if (!currentUser) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'กรุณาเข้าสู่ระบบ',
+                    text: 'คุณต้องเข้าสู่ระบบก่อนดูประวัติการทดสอบ',
+                    confirmButtonText: 'เข้าสู่ระบบ',
+                    confirmButtonColor: '#3b82f6'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        showLogin();
+                    }
+                });
+                return;
+            }
+
+            // Filter test results for current user
+            const userTests = allTestResults.filter(test => 
+                test.userId === currentUser.id || test.userEmail === currentUser.email
+            );
+            
+            if (userTests.length > 0) {
+                displayHistoryResults(userTests, 'ข้อมูลการทดสอบ');
+            } else {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'ไม่พบประวัติการทดสอบ',
+                    text: 'คุณยังไม่เคยทำแบบทดสอบ กรุณาทำแบบทดสอบก่อน',
+                    confirmButtonText: 'ทำแบบทดสอบ',
+                    confirmButtonColor: '#3b82f6'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('test').scrollIntoView({behavior: 'smooth'});
+                    }
+                });
+            }
+        }
+
+
+
+        function displayHistoryResults(userTests, dataSource) {
+            // Sort by date (newest first)
+            userTests.sort((a, b) => new Date(b.testDate) - new Date(a.testDate));
+            
+            let historyHtml = `
+                <div class="text-center mb-4">
+                    <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                        📊 ข้อมูลจาก: ${dataSource}
+                    </span>
+                </div>
+                <div class="max-h-96 overflow-y-auto">
+            `;
+            
+            userTests.forEach((test, index) => {
+                const date = new Date(test.testDate).toLocaleDateString('th-TH', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                const time = new Date(test.testDate).toLocaleTimeString('th-TH', {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                
+                // Calculate top skills
+                const topSkills = Object.entries(test.skillScores || {})
+                    .sort(([,a], [,b]) => b - a)
+                    .slice(0, 3)
+                    .map(([skill, score]) => `${skillCategories[skill] || skill}: ${score}%`)
+                    .join(', ');
+                
+                const totalMinutes = Math.floor((test.totalTime || 0) / 60);
+                const totalSeconds = (test.totalTime || 0) % 60;
+                
+                historyHtml += `
+                    <div class="border border-gray-200 rounded-lg p-4 mb-3 hover:bg-gray-50 transition-colors">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-bold text-gray-800">การทดสอบครั้งที่ ${index + 1}</h4>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
+                                ✅ สำเร็จ
+                            </span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 text-sm">
+                            <div>
+                                <span class="text-gray-500">📅 วันที่:</span>
+                                <span class="font-medium">${date}</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-500">🕐 เวลา:</span>
+                                <span class="font-medium">${time}</span>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <span class="text-gray-500 text-sm">🏆 ทักษะเด่น:</span>
+                            <p class="text-sm font-medium text-blue-600">${topSkills || 'ไม่มีข้อมูล'}</p>
+                        </div>
+                        <div class="mt-2 flex justify-between items-center">
+                            <span class="text-xs text-gray-500">
+                                ⏱️ เวลาที่ใช้: ${totalMinutes}:${totalSeconds.toString().padStart(2, '0')}
+                            </span>
+                            <button onclick="viewDetailedResult('${test.testId || index}')" 
+                                    class="text-xs bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">
+                                ดูรายละเอียด
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            historyHtml += '</div>';
+            
+            Swal.fire({
+                title: `📋 ประวัติการทำแบบทดสอบ (${userTests.length} ครั้ง)`,
+                html: historyHtml,
+                width: 800,
+                confirmButtonText: 'ปิด',
+                confirmButtonColor: '#3b82f6',
+                showCancelButton: true,
+                cancelButtonText: 'ทำแบบทดสอบใหม่',
+                cancelButtonColor: '#10b981'
+            }).then((result) => {
+                if (result.dismiss === Swal.DismissReason.cancel) {
+                    document.getElementById('test').scrollIntoView({behavior: 'smooth'});
+                    if (currentUser) {
+                        startTest();
+                    }
+                }
+            });
+        }
+
+        function viewDetailedResult(testId) {
+            Swal.fire({
+                icon: 'info',
+                title: 'รายละเอียดการทดสอบ',
+                text: 'ฟีเจอร์นี้จะพัฒนาในเวอร์ชันถัดไป',
+                confirmButtonText: 'ตกลง'
+            });
+        }
+
+        // Initialize test display when user is logged in
+        function initializeTestDisplay() {
+            if (currentUser) {
+                document.getElementById('loginPrompt').classList.add('hidden');
+                document.getElementById('testContainer').classList.remove('hidden');
+                
+                // Show start button instead of auto-starting
+                document.getElementById('questionContainer').innerHTML = `
+                    <div class="text-center py-12">
+                        <div class="text-6xl mb-6">📝</div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">พร้อมทำแบบทดสอบแล้วหรือยัง?</h3>
+                        <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+                            มีคำถาม 24 ข้อ เพื่อประเมินทักษะในด้านต่างๆ ของคุณ
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                            <button onclick="startActualTest()" class="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors">
+                                🚀 เริ่มทำแบบทดสอบ
+                            </button>
+                            <button onclick="viewHistory()" class="bg-green-600 text-white px-6 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors">
+                                📋 ดูประวัติการทดสอบ
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Function to actually start the test
+        function startActualTest() {
+            currentQuestionIndex = 0;
+            answers = [];
+            startTime = new Date();
+            
+            // Reset the question container to show the actual test interface
+            document.getElementById('questionContainer').innerHTML = `
+                <div class="mb-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-sm text-gray-500">คำถามที่ <span id="currentQuestion">1</span> จาก 24</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div id="progressBar" class="bg-blue-600 h-2 rounded-full progress-bar" style="width: 4%"></div>
+                    </div>
+                </div>
+                
+                <div id="questionContent">
+                    <h3 id="questionText" class="text-xl font-bold text-gray-800 mb-6"></h3>
+                    <div id="answerOptions" class="space-y-4"></div>
+                </div>
+                
+                <div class="flex justify-between mt-8">
+                    <button id="prevBtn" onclick="previousQuestion()" class="bg-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-400 transition-colors" disabled>ก่อนหน้า</button>
+                    <button id="nextBtn" onclick="nextQuestion()" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">ถัดไป</button>
+                </div>
+            `;
+            
+            startTimer();
+            showQuestion();
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'979363e962827331',t:'MTc1Njg4MzAzOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
